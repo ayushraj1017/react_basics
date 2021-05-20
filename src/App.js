@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
-
+import ContextApi from './components/ContextApi'
+import Counter from './components/Counter'
+import List from './components/List'
+import UseRef from './components/UseRef'
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+import Home from './components/Home'
+import Error from './components/Error'
+import Nav from './components/Nav'
+import Person from './components/Person'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    <Router>
+    <Nav/>
+      <Switch>
+      <Route exact path='/'>
+      <Home/>
+      </Route>
+      <Route exact path='/counter'>
+      <Counter/>
+      </Route>
+      <Route exact path='/contextapi'>
+      <ContextApi/>
+      </Route>
+      <Route path='/person'>
+        <Person/>
+      </Route>
+      <Route exact path='*'>
+      <Error/>
+      </Route>
+      </Switch>
+     
+    </Router>
+    {/* <Counter/>
+    <List/>
+    <UseRef/> */}
+    {/* <ContextApi/> */}
+    </>
   );
 }
 
